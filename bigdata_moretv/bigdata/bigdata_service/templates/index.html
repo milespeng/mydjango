@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>大数据服务管理系统</title>
+    </head>
+    <body>
+        <h3><a href="/admin/">Admin</a></h3>
+        <ul>
+            {% for service in services %}
+            <li>{{ service.name }} - {{ service.get_hosts_display }}</li>
+            {% endfor %}
+        </ul>
+        <hr/>
+        <form action="/" method="post">
+            {% csrf_token %}
+            {{ form }}
+            <input type="submit" value="Submit" />
+        </form>
+    </body>
+</html>

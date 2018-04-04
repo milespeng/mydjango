@@ -23,5 +23,5 @@ class Student(models.Model):
         return '<Student: {}>'.format(self.name)
 
 
-class Meta:
-    verbose_name = verbose_name_plural = "学员信息"
+    class Meta:
+        verbose_name = verbose_name_plural = "学员信息"
