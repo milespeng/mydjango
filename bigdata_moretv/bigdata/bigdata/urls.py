@@ -15,7 +15,6 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from bigdata_service.view import index
 
-urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-]
+urlpatterns = [url(r'^admin/', admin.site.urls), url(r'^$', index, name='index'), ]

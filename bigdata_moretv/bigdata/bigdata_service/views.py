@@ -7,28 +7,32 @@ from django.urls import reverse
 from django.shortcuts import render
 
 from .models import Service
-from .forms import Service
+from .forms import ServiceForm
 
 
 # Create your views here.
 def index(request):
-    #services=Service
+    services = Service.objects.all()
 
     if request.method == 'POST':
-        form = StudentForm(request.POST)
+        form = ServiceForm(request.POST)
         if form.is_valid():
             cleaned_data = form.cleaned_data
-            student = Service()
-            student.name = cleaned_data['name']
-            student.sex = cleaned_data['sex']
-            student.email = cleaned_data['email']
-            student.profession = cleaned_data['profession']
-            student.qq = cleaned_data['qq']
-            student.phone = cleaned_data['phone']
-            student.save()
+            service = Service()
+            service.name = cleaned_data['name']
+            service.cwd = cleaned_data['cwd']
+            service.user = cleaned_data['user']
+            service.cmd = cleaned_data['cmd']
+            service.port = cleaned_data['port']
+            service.host = cleaned_data['host']
+            service.logpath = cleaned_data['logpath']
+            service.create_user = cleaned_data['create_user']
+            service.zabbix_item = cleaned_data['zabbix_item']
+
+            service.save()
             return HttpResponseRedirect(reverse('index'))
     else:
-        form = StudentForm()
+        form = ServiceForm()
 
-    context = {'students': students, 'form': form, }
+    context = {'services': services, 'form': form, }
     return render(request, 'index.html', context=context)
