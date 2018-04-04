@@ -9,7 +9,7 @@ class Service(models.Model):
     USER_ITEM = [(1, "moretv"), (2, 'hdfs'), (3, 'yarn'), (4, 'storm'), (5, 'spark')]
     name = models.CharField(max_length=128, verbose_name='服务名称')
     cwd = models.CharField(max_length=128, verbose_name='工作路径')
-    user = models.CharField(choices=USER_ITEM, verbose_name='工作用户')
+    user = models.IntegerField(choices=USER_ITEM, verbose_name='工作用户')
     cmd = models.CharField(max_length=128, verbose_name='启动命名')
     port = models.CharField(max_length=128, verbose_name="服务端口")
     host = models.CharField(max_length=128, verbose_name="部署服务器")

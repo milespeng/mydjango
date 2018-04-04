@@ -18,4 +18,4 @@ class ServiceForm(forms.ModelForm):
 
     class Meta:
         model = Service
-        fields = ('name', 'cwd', 'user', 'cmd', 'port', 'host','logpath','create_time','create_user','zabbix_item')
+        fields = ('name', 'cwd', 'user', 'cmd', 'port', 'host','logpath','create_user','zabbix_item')
